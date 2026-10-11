@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "./icons";
-import { usePerView } from "./useSlider";
+import { usePerView, useSwipe } from "./useSlider";
 
 const logos = [
   { name: "Next.js", src: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" },
@@ -17,6 +17,7 @@ export default function LogoSlider() {
   const slides = logos.length - perView + 1;
   const [index, setIndex] = useState(0);
   const current = Math.min(index, slides - 1);
+  const swipe = useSwipe((d) => setIndex((current + d + slides) % slides));
 
   useEffect(() => {
     const id = setInterval(() => setIndex((i) => (Math.min(i, slides - 1) + 1) % slides), 3500);
@@ -30,7 +31,7 @@ export default function LogoSlider() {
           What powers our digital products
         </p>
         <div className="relative mt-8">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden" {...swipe}>
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${current * (100 / perView)}%)` }}
@@ -55,7 +56,7 @@ export default function LogoSlider() {
             type="button"
             aria-label="Previous clients"
             onClick={() => setIndex((current - 1 + slides) % slides)}
-            className="absolute left-0 top-1/2 flex h-9 w-9 -translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+            className="absolute left-0 top-1/2 hidden sm:flex h-9 w-9 -translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -63,7 +64,7 @@ export default function LogoSlider() {
             type="button"
             aria-label="Next clients"
             onClick={() => setIndex((current + 1) % slides)}
-            className="absolute right-0 top-1/2 flex h-9 w-9 translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+            className="absolute right-0 top-1/2 hidden sm:flex h-9 w-9 translate-x-4 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

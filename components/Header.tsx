@@ -74,10 +74,17 @@ export default function Header() {
 
   const close = () => setMobile(false);
 
+  useEffect(() => {
+    document.body.style.overflow = mobile ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobile]);
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled || mobile ? "border-b border-border bg-white/90 backdrop-blur-md" : "bg-transparent"
+        scrolled || mobile ? "border-b border-border bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
@@ -96,27 +103,32 @@ export default function Header() {
           <Link href="/about" className={linkClass}>About</Link>
           <Link href="/contact" className={linkClass}>Contact</Link>
         </div>
-        <button className="lg:hidden" aria-label="Toggle menu" onClick={() => setMobile((v) => !v)}>
+        <button
+          className="-mr-2 flex h-11 w-11 items-center justify-center rounded-lg lg:hidden"
+          aria-label="Toggle menu"
+          aria-expanded={mobile}
+          onClick={() => setMobile((v) => !v)}
+        >
           {mobile ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
       {mobile && (
-        <div className="max-h-[80vh] overflow-y-auto border-t border-border px-6 pb-6 lg:hidden">
+        <div className="mobile-menu max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-white px-6 pb-8 lg:hidden">
           <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Services</p>
           {services.map((i) => (
-            <Link key={i.href} href={i.href} onClick={close} className="block py-2 text-sm text-foreground">
+            <Link key={i.href} href={i.href} onClick={close} className="block py-3 text-base text-foreground">
               {i.label}
             </Link>
           ))}
           <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Technologies</p>
           {technologies.map((i) => (
-            <Link key={i.href} href={i.href} onClick={close} className="block py-2 text-sm text-foreground">
+            <Link key={i.href} href={i.href} onClick={close} className="block py-3 text-base text-foreground">
               {i.label}
             </Link>
           ))}
           <div className="mt-4 flex flex-col border-t border-border pt-2">
-            <Link href="/about" onClick={close} className="py-2 text-sm font-medium text-foreground">About</Link>
-            <Link href="/contact" onClick={close} className="py-2 text-sm font-medium text-foreground">Contact</Link>
+            <Link href="/about" onClick={close} className="py-3 text-base font-medium text-foreground">About</Link>
+            <Link href="/contact" onClick={close} className="py-3 text-base font-medium text-foreground">Contact</Link>
           </div>
         </div>
       )}

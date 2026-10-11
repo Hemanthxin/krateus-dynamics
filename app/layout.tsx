@@ -1,7 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ScrollReveal from "@/components/ScrollReveal";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta-sans", display: "swap" });
 
 const siteUrl = "https://krateus-dynamics.web.app";
 
@@ -98,12 +103,13 @@ const jsonLd = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className={`${inter.variable} ${jakarta.variable} font-sans antialiased`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <main className="min-h-screen bg-background">
           <Header />
           {children}
           <Footer />
+          <ScrollReveal />
         </main>
       </body>
     </html>
