@@ -40,3 +40,4 @@ h1,h2,h3,.font-heading{font-family:var(--font-jakarta-sans),var(--font-inter),ui
   p{text-wrap:pretty}
 }
 img{max-width:100%}
+.object-\[50\%_25\%\]{object-position:50% 25%}
