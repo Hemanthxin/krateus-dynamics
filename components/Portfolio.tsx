@@ -53,6 +53,13 @@ const projects = [
     image: "/images/portfolio/distributor.webp",
     href: "https://campa-showcase-app.lovable.app/",
   },
+  {
+    name: "Royal Pastries",
+    category: "Food & Beverage",
+    blurb: "Cake shop menu, offers and WhatsApp ordering",
+    image: "/images/portfolio/bakery.webp",
+    href: "https://royal-crumb-gallery.lovable.app",
+  },
 ];
 
 const categories = ["All", ...projects.map((p) => p.category)];
