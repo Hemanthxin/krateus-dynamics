@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { siteUrl } from "@/lib/seo";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
@@ -8,7 +9,6 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta-sans", display: "swap" });
 
-const siteUrl = "https://krateus-dynamics.web.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -38,7 +38,13 @@ export const metadata: Metadata = {
     "Mulbagal App Developers",
     "Premium Software Developers",
   ],
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  verification: { google: "QKP5i7vsDEXI2fxHtDYaY4qaNX0MFveGeUriEiJ20YA" },
+  category: "technology",
   alternates: { canonical: "/" },
   manifest: "/favicon/site.webmanifest",
   icons: {
@@ -84,8 +90,13 @@ const jsonLd = [
       addressCountry: "IN",
     },
     areaServed: ["Mulbagal", "Bengaluru", "Karnataka"],
+    email: "krateusdynamic@gmail.com",
+    founder: { "@type": "Person", name: "Vinod Gowda K.R", jobTitle: "Founder" },
+    logo: `${siteUrl}/logo.png`,
+    priceRange: "$$",
     sameAs: [
       "https://www.linkedin.com/company/krateus-dynamics",
+      "https://www.instagram.com/krateusdynamicsoln",
       "https://github.com/Krateus-Dynamics",
       "https://x.com/KrateusDynamics",
       "https://www.youtube.com/@KrateusDynamics",
@@ -97,6 +108,7 @@ const jsonLd = [
     name: "Krateus Dynamics",
     alternateName: "Krateus Dynamic Solutions",
     url: siteUrl,
+    inLanguage: "en-IN",
   },
 ];
 
