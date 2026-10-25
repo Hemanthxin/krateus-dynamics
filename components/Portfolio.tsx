@@ -32,6 +32,27 @@ const projects = [
     image: "/images/portfolio/school-portfolio.avif",
     href: "https://krateus-international-school.web.app/",
   },
+  {
+    name: "Ondine Boutique",
+    category: "Retail & E-commerce",
+    blurb: "Handmade home goods storefront with cart and checkout",
+    image: "/images/portfolio/boutique.webp",
+    href: "https://exact-view-boutique.lovable.app",
+  },
+  {
+    name: "Catch Your Nest Realtors",
+    category: "Real Estate",
+    blurb: "Property listings for flats, villas and gated communities",
+    image: "/images/portfolio/real-estate.webp",
+    href: "https://catch-your-nest-real-k4ln.bolt.host",
+  },
+  {
+    name: "Sharma Beverage Distributors",
+    category: "Distribution & Wholesale",
+    blurb: "Wholesale ordering and distribution network showcase",
+    image: "/images/portfolio/distributor.webp",
+    href: "https://campa-showcase-app.lovable.app/",
+  },
 ];
 
 const categories = ["All", ...projects.map((p) => p.category)];
