@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /** Canonical origin. Set NEXT_PUBLIC_SITE_URL in Vercel when a custom domain is attached. */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://krateus-dynamics.vercel.app").replace(/\/$/, "");
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.krateusdynamics.com").replace(/\/$/, "");
 
 export const siteName = "Krateus Dynamics";
 export const ogImage = { url: "/og-image.png", width: 1200, height: 630, alt: "Krateus Dynamics Banner" };
